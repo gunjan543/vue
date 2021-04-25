@@ -1,24 +1,22 @@
 new Vue({
-    el:'#vue-app',
-    data:{
-        age:25,
-        x:0,
-        y:0
+    el: '#vue-app',
+    data: {
+        health: 100,
+        ended: false
     },
-    methods:{
-        add:function(inc){
-            this.age += inc;
+    methods: {
+        punch: function(){
+            this.health -= 10;
+            if ( this.health <= 0 ){
+                this.ended = true;
+            }
         },
-        subtract:function(dec){
-            this.age -= dec;
-        },
-        updateXY:function(event){
-          this.x=event.offsetX;
-          this.y=event.offsetY;
-        },
-        click:function(){
-            alert("You clicked me")
+        restart: function(){
+            this.health = 100;
+            this.ended = false;
         }
+    },
+    computed: {
 
     }
 });
